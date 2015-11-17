@@ -1,0 +1,6 @@
+---
+- include: hosts.yml
+- include: yum.yml
+- include: ldap.conf.yml
+- include: authconfig.yml
+- include: sshd_config.yml

@@ -1,0 +1,17 @@
+#--
+- shell: ls /etc/openldap/ldap.conf.org
+  register: ldap_conf_exists
+  ignore_errors: True
+
+- copy: src=/etc/openldap/ldap.conf dest=/etc/openldap/ldap.conf.org
+  when: ldap_conf_exists|failed
+
+- copy: src=etc/openldap/ldap.conf  dest=/etc/openldap/
+
+#- file: src=/etc/openldap/ldap.conf  dest=/etc/ssh/ state=link
+- shell: ls /etc/ssh/ldap.conf
+  register: link_exists
+  ignore_errors: True
+
+- command: ln -s /etc/openldap/ldap.conf /etc/ssh/
+  when: link_exists|failed

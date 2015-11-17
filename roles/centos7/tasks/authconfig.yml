@@ -1,0 +1,4 @@
+- command: authconfig --enableldap --enableldapauth \
+   --ldapserver=ldap.lazyarea.com --ldapbasedn="dc=lazyarea,dc=com" \
+   --enablemkhomedir --update
+
